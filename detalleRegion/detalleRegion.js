@@ -39,7 +39,7 @@ $(document).ready(function () {
         //paginator += "<li class=\"page-item\" aria-current=\"page\"><a value=\"1\" class=\"page-link\">1</a></li>";
         for (let j = 0; j < numpage; j++) {
             if((j+1) == 1){
-                paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link' style='background-color: #2673ba'>" + (j + 1) + "</span></li>";
+                paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link' style='background-color: #0d6efd; color:#fff'>" + (j + 1) + "</span></li>";
             }else{
                 paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link'>" + (j + 1) + "</span></li>";
             }
@@ -61,7 +61,7 @@ $(document).ready(function () {
                     paginator = "<li class=\"page-item\"><span class=\"page-link\" value=\"1\">Previous</span></li>";
                     for (let j = 0; j < numpage; j++) {
                         if((j+1) == id){
-                            paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link' style='background-color: #2673ba'>" + (j + 1) + "</span></li>";
+                            paginator += "<li class='page-item' aria-current='page'><span ' value=" + (j + 1) + " class='page-link' style='background-color: #0d6efd;color:#fff'>" + (j + 1) + "</span></li>";
                         }
                         else{
                             paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link'>" + (j + 1) + "</span></li>";

@@ -12,7 +12,7 @@ $(document).ready(function () {
             contentHTML += "<tr>";
             contentHTML += "<td>" + (i+1) + "</td>";
             contentHTML += "<td>" + pais.name + "</td>";
-            contentHTML += `<td><a class=\"botonDetalle\" href=\"./detalleRegion/detalleRegion.html?id=${array}\+&nombre=${pais.name}">Detalle</a></td>`;
+            contentHTML += `<td><a class=\"btn btn-primary\" href=\"./detalleRegion/detalleRegion.html?id=${array}\+&nombre=${pais.name}">Detalle</a></td>`;
             contentHTML += "</tr>";
         })
         $("#body-paises").html(contentHTML);
