@@ -12,10 +12,10 @@ $(document).ready(function () {
         method: "GET",
         url: urlLocacion,
     }).done(function (data) {
-        listaLocalidades = data.locations;
+        var listaLocalidades = data.locations;
         let tblDinamic = "";
         //para el calculo del numero de páginas
-        numPerPage = 10;
+        var numPerPage = 10;
         $("#labelRegion").text("Resumen de la region " + nombrePais);
         if (listaLocalidades.length % numPerPage == 0) {
             //quiere decir que no hay residuo
@@ -28,7 +28,7 @@ $(document).ready(function () {
             tblDinamic += "   <td>" + (i + 1) + "</td>";
             tblDinamic += "   <td>" + listaLocalidades[i].name + "</td>";
             let id = listaLocalidades[i].url.split("/").at(-2);
-            let redireccionLink = "./detalleLocacion/detalleLocacion?id=" + id;
+            let redireccionLink = "../detalleLocacion/detalleLocacion.html?locacion=" + id;
             tblDinamic += "   <td>" + "<a type=\"button\" class=\"btn btn-primary\" href=" + redireccionLink + " > Detalle </a>" + "</td>";
             tblDinamic += "</tr>";
         }
@@ -38,15 +38,39 @@ $(document).ready(function () {
         paginator = "<li class=\"page-item\"><span class=\"page-link\" value=\"1\">Previous</span></li>";
         //paginator += "<li class=\"page-item\" aria-current=\"page\"><a value=\"1\" class=\"page-link\">1</a></li>";
         for (let j = 0; j < numpage; j++) {
-            paginator += "<li class=\"page-item\" aria-current=\"page\"><span value=" + (j + 1) + " class=\"page-link\">" + (j + 1) + "</span></li>";
+            if((j+1) == 1){
+                paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link' style='background-color: #2673ba'>" + (j + 1) + "</span></li>";
+            }else{
+                paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link'>" + (j + 1) + "</span></li>";
+            }
+            //paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link'>" + (j + 1) + "</span></li>";
         }
         paginator += "<li class=\"page-item\"><span class=\"page-link\" value=" + numpage + " >Next</span></li>";
         $("#paginador").html(paginator);
-        $('.page-link').click(function () {
+
+
+        //$('.page-link').click(function () {
+          $("nav").on("click",".page-link",function(){
                 var id = $(this).html();//obtengo el id
                 // actualizo los nuevos limites
                 try {
                     console.log("El valor numerico es" + id);
+
+                    ////////////////////////////////////////////////--
+                    let paginator = "";
+                    paginator = "<li class=\"page-item\"><span class=\"page-link\" value=\"1\">Previous</span></li>";
+                    for (let j = 0; j < numpage; j++) {
+                        if((j+1) == id){
+                            paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link' style='background-color: #2673ba'>" + (j + 1) + "</span></li>";
+                        }
+                        else{
+                            paginator += "<li class='page-item' aria-current='page'><span value=" + (j + 1) + " class='page-link'>" + (j + 1) + "</span></li>";
+                        }
+                    }
+                    paginator += "<li class=\"page-item\"><span class=\"page-link\" value=" + numpage + " >Next</span></li>";
+                    $("#paginador").html(paginator);
+
+                    ////////////////////////////////////////---
                     if (!isNaN(id)) {
                         numberId = id;
                         let min = (numberId - 1) * numPerpage;
@@ -59,7 +83,7 @@ $(document).ready(function () {
                                 tblAct += "   <td>" + (i + 1) + "</td>";
                                 tblAct += "   <td>" + listaLocalidades[i].name + "</td>";
                                 let id = listaLocalidades[i].url.split("/").at(-2);
-                                let redireccionLink = "./detalleLocacion/detalleLocacion?id=" + id;
+                                let redireccionLink = "../detalleLocacion/detalleLocacion.html?locacion=" + id;
                                 tblAct += "   <td>" + "<a type=\"button\" class=\"btn btn-primary\" href=" + redireccionLink + " > Detalle </a>" + "</td>";
                                 tblAct += "</tr>";
                             }
@@ -69,7 +93,7 @@ $(document).ready(function () {
                                 tblAct += "   <td>" + (i + 1) + "</td>";
                                 tblAct += "   <td>" + listaLocalidades[i].name + "</td>";
                                 let id = listaLocalidades[i].url.split("/").at(-2);
-                                let redireccionLink = "./detalleLocacion/detalleLocacion?id=" + id;
+                                let redireccionLink = "../detalleLocacion/detalleLocacion.html?locacion=" + id;
                                 tblAct += "   <td>" + "<a type=\"button\" class=\"btn btn-primary\" href=" + redireccionLink + " > Detalle </a>" + "</td>";
                                 tblAct += "</tr>";
                             }
@@ -105,7 +129,7 @@ $(document).ready(function () {
                                     tblAct += "   <td>" + (i + 1) + "</td>";
                                     tblAct += "   <td>" + listaLocalidades[i].name + "</td>";
                                     let id = listaLocalidades[i].url.split("/").at(-2);
-                                    let redireccionLink = "./detalleLocacion/detalleLocacion?id=" + id;
+                                    let redireccionLink = "../detalleLocacion/detalleLocacion.html?locacion=" + id;
                                     tblAct += "   <td>" + "<a type=\"button\" class=\"btn btn-primary\" href=" + redireccionLink + " > Detalle </a>" + "</td>";
                                     tblAct += "</tr>";
                                 }
@@ -115,7 +139,7 @@ $(document).ready(function () {
                                     tblAct += "   <td>" + (i + 1) + "</td>";
                                     tblAct += "   <td>" + listaLocalidades[i].name + "</td>";
                                     let id = listaLocalidades[i].url.split("/").at(-2);
-                                    let redireccionLink = "./detalleLocacion/detalleLocacion?id=" + id;
+                                    let redireccionLink = "../detalleLocacion/detalleLocacion.html?locacion=" + id;
                                     tblAct += "   <td>" + "<a type=\"button\" class=\"btn btn-primary\" href=" + redireccionLink + " > Detalle </a>" + "</td>";
                                     tblAct += "</tr>";
                                 }
