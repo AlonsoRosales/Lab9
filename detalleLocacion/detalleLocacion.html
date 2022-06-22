@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>TODO supply a title</title>
     <meta charset="UTF-8">
@@ -9,6 +8,11 @@
     <link rel="stylesheet" href="./detalleLocacion.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="./detalleLocacion.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="gallery-grid.css">
 </head>
 
 <body>
@@ -18,7 +22,7 @@
             <div class="div-bandera" id="bandera-div"></div>
         </div>
         <hr />
-        <a class="btn btn-primary" role="button" href="../index.html">Regresar a la Region</a>
+        <a class="btn btn-primary" role="button" id="redirigir">Regresar a la Region</a>
         <hr />
         <h4 id="labelLocacion">Locacion</h4>
         <h4 id="labelRegion">Region</h4>
@@ -28,7 +32,9 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th></th>
                     <th>Area</th>
+                    <th></th>
                     <th>Detalles</th>
                 </tr>
             </thead>
@@ -37,8 +43,13 @@
         </table>
         <hr />
         <h5 id="areaSeleccionada"></h5>
-        <div id="pokemons">
+        <div class="container gallery-container">
+            <div class="tz-gallery">
+                <div class="row" id="pokemons">
+                </div>
+            </div>
         </div>
+        <div style="height: 150px"></div>
+    </div>
 </body>
-
 </html>
